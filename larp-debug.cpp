@@ -64,85 +64,139 @@ void cmd_betterecho(string input) {
         exception = false;
         written = false;
         dash = false;
+        cout << endl << "==================debug time!!==================" << endl;
+        cout << "--------loop at loop " << i << " --------" << endl;
+        cout << "whole at " << i << " is: " << whole[i] << endl;
+        cout << "check for dash..." << endl;
         if (check_input[0] == '-') {
+            cout << "check_input has dash, proceeding with check for flags..." << endl;
             if ((check_input[1] != 'b' && check_input[1] != 'u') && check_input[1] != 'c') {
+                cout << "flags NOT found! will be adding to output current whole[" << i << "]" << endl;
                 if (i == exceptions_hit) {
                     output = output + whole[i];
                 }
                 else {
                     output = output + " " + whole[i];
                 }
+                cout << "current output:" << output << endl;
                 written = true;
             }
             else if (check_input.size() == 3){
+                cout << "flags found!" << endl;
+                cout << "flag size 3! checking WHICH flag in particular..." << endl;
                 if (check_input[1] == 'b' || check_input[2] == 'b') {
+                    cout << "flag 'b' found! setting setBold to true..." << endl;
                     setBold = true;
                 }
                 if (check_input[1] == 'u' || check_input[2] == 'u') {
+                    cout << "flag 'u' found! setting setLine to true..." << endl;
                     setLine = true;
                 }
             }
             else if (check_input.size() == 2){
+                cout << "flags found!" << endl;
+                cout << "flag size 2! checking WHICH flag in particular..." << endl;
                 if (check_input[1] == 'b') {
+                    cout << "flag 'b' found! setting setBold to true..." << endl;
                     setBold = true;
                 }
                 else if (check_input[1] == 'u') {
+                    cout << "flag 'u' found! setting setLine to true..." << endl;
                     setLine = true;
                 }
                 else if (check_input[1] == 'c') {
+                    cout << "flag 'c' found! setting setColor to true..." << endl;
                     setColor = true;
+                    cout << "colorToken set to " << i << "." << endl;
                     colorToken = i; //from here, make another loop that takes input starting at token, get the next 3 tokens as r, g and b and then use setstyle
                 }
             }
         }
+        cout << "finished checking for dash. now proceeding with writing to output if needed." << endl;
         if (setColor == true) {
+            cout << "setColor detected as true! special case..." << endl;
             if (i == (colorToken + 1) || i == (colorToken + 2)) {
                 //do nothing
+                cout << "colorToken: " << colorToken << endl;
+                cout << "i = " << i << endl;
+                cout << "if i == colorToken + 1/2, do nothing." << endl;
+                cout << "current output:" << output << endl;
             }
             else if (i == (colorToken + 3) || i == colorToken) {
                 //do nothing
+                cout << "colorToken: " << colorToken << endl;
+                cout << "i = " << i << endl;
+                cout << "if i == colorToken + 3/colortoken, do nothing." << endl;
+                cout << "current output:" << output << endl;
             }
             else {
+                cout << "i is not colortoken + 1/2/3, adding the following to output:" << whole[i] << endl;
                 if (i == (colorToken + 4)) {
                     output = output + whole[i];
                 }
                 else {
                     output = output + " " + whole[i];
                 }
+                cout << "current output:" << output << endl;
             }
         }
         else {
+            cout << "standard writing to output: " << whole[i] << endl;
             if (whole[i] == "-b" || whole[i] == "-u" || whole[i] == "-c"){
                 //do nothing
+                cout << "exception CAUGHT! flag was about to be written to output" << endl;
                 exception = true;
             }
             else if (whole[i] == "-bu" || whole[i] == "-ub"){
-                //do nothing
+                cout << "exception CAUGHT! flag was about to be written to output" << endl;
                 exception = true;
             }
             if (i == 0 && exception == false && written == false) {
+                cout << "exception CAUGHT! current loop states i==0, avoiding leading spaces..." << endl;
                 output = output + whole[i];
                 written = true;
             }
             else if (i == exceptions_hit && exception == false && written == false) {
+                cout << "exception CAUGHT! i = exceptions hit so same as i==0, avoid leading spaces..." << endl;
                 output = output + whole[i];
                 written = true;
             }
             if (exception == false && written == false){
+                cout << "default write to output..." << endl;
                 output = output + " " + whole[i];
             }
             else if (exception == true){
                 //do nothing
+                cout << "did nothing." << endl;
                 exceptions_hit++;
+                cout << "current exceptions hit:" << exceptions_hit << endl;
             }
+            cout << "current output:" << output << endl;
         }
     }
+    cout << "--------exiting from loop--------" << endl;
     int color_values[4] = {0,255,255,255};
+    cout << "current color_values:";
+    for (int i = 0; i < 4; i++) {
+        cout << color_values[i] << ",";
+    }
+    cout << "." << endl;
     if (setColor == true) {
+        cout << "setColor is true! initiating writing new color values..." << endl;
         for (int i = 1; i < 4; i++) {
+            cout << "writing " << whole[colorToken + i] << " to " << i << " of color_values array" << endl;
             color_values[i] = stoi(whole[colorToken + i]);
         }
     }
+    cout << "current color_values:";
+    for (int i = 0; i < 4; i++) {
+        cout << color_values[i] << ",";
+    }
+    cout << "." << endl;
+    cout << "setBold: " << setBold << " setLine: " << setLine << endl;
+    cout << "output:" << output << endl;
+    cout << "applying style and output..." << endl;
+    cout << "==================end debug!!==================" << endl;
     setStyle(color_values[1],color_values[2],color_values[3],setBold,setLine); //the actual settings
     cout << output << endl;
     resetStyle();
@@ -233,4 +287,3 @@ int main(){
     }
     return 0;
 }
-
