@@ -56,17 +56,17 @@ void cmd_betterecho(string input) {
     bool setColor = false;
     bool dash = false;
     int colorToken = 0;
-    int exeptions_hit = 0;
-    bool exeption = false;
+    int exceptions_hit = 0;
+    bool exception = false;
     bool written = false;
     for (int i = 0; i < whole.size(); i++) {
         check_input = whole[i];
-        exeption = false;
+        exception = false;
         written = false;
         dash = false;
         if (check_input[0] == '-') {
             if ((check_input[1] != 'b' && check_input[1] != 'u') && check_input[1] != 'c') {
-                if (i == exeptions_hit) {
+                if (i == exceptions_hit) {
                     output = output + whole[i];
                 }
                 else {
@@ -114,26 +114,26 @@ void cmd_betterecho(string input) {
         else {
             if (whole[i] == "-b" || whole[i] == "-u" || whole[i] == "-c"){
                 //do nothing
-                exeption = true;
+                exception = true;
             }
             else if (whole[i] == "-bu" || whole[i] == "-ub"){
                 //do nothing
-                exeption = true;
+                exception = true;
             }
-            if (i == 0 && exeption == false && written == false) {
+            if (i == 0 && exception == false && written == false) {
                 output = output + whole[i];
                 written = true;
             }
-            else if (i == exeptions_hit && exeption == false && written == false) {
+            else if (i == exceptions_hit && exception == false && written == false) {
                 output = output + whole[i];
                 written = true;
             }
-            if (exeption == false && written == false){
+            if (exception == false && written == false){
                 output = output + " " + whole[i];
             }
-            else if (exeption == true){
+            else if (exception == true){
                 //do nothing
-                exeptions_hit++;
+                exceptions_hit++;
             }
         }
     }
