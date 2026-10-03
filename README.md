@@ -27,5 +27,4 @@ Then run:
 `` larp.exe ``
 
 ## Project status
-LarpOS is a hobby/learning project and is still being developed.
-The code is intentionally bad as I am a beginner C++ developer.
+LarpOS is a hobby/learning project and is still being developed. The code is intentionally ass due to my massive skill issue. If you don't like my spaghetti, you are free to make a pull request.
