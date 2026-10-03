@@ -1,10 +1,30 @@
 # larp-shell
-Fake shell runnning LarpOS written in C++.
+A fake shell running a fake operating system.
+LarpOS is a small terminal project that simulates an operating system shell.
 
 ## Features
-- echo
-- clear
-- betterecho
-- RGB colors
-- bold
-- underline
+- Interactive terminal shell
+- Built-in commands
+  + `echo`
+  + `betterecho`
+  + `clear`
+- ANSI terminal colors and text styles
+- Command parsing
+- ASCII-art startup screen
+
+## Building
+Compile with g++:
+
+`` g++ larp-debug.cpp -o larp ``
+
+Then run:
+
+### Linux / macOS
+`` ./larp ``
+
+### Windows
+`` larp.exe ``
+
+## Project status
+LarpOS is a hobby/learning project and is still being developed.
+The code is intentionally bad as I am a beginner C++ developer.
