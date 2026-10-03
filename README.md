@@ -8,6 +8,7 @@ LarpOS is a small terminal project that simulates an operating system shell.
   + `echo`
   + `betterecho`
   + `clear`
+  + ...
 - ANSI terminal colors and text styles
 - Command parsing
 - ASCII-art startup screen
