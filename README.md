@@ -1,5 +1,4 @@
 # larp-shell
-A fake shell running a fake operating system.
 LarpOS is a small terminal project that simulates an operating system shell.
 
 ## Features
