@@ -29,8 +29,12 @@ Then run:
 LarpOS is a work-in-progress shell simulation written in C++. It currently supports basic interactive commands, terminal styling, and primitive command parsing.
 
 ## To-do
-- `help` command: shows list of available commands
-- `man` command: shows help on specific commands
-- Commands that connect the shell to the filesystem
-- Fake filesystem with fake root and fake `sudo`
-- Scripting
+- [x] Make a title screen
+- [x] Make a command parser
+- [x] `echo` command: prints input to output
+- [x] `betterecho` command: `echo` but with styling
+- [ ] `help` command: shows list of available commands
+- [ ] `man` command: shows help on specific commands
+- [ ] Commands that connect the shell to the filesystem
+- [ ] Fake filesystem with fake root and fake `sudo`
+- [ ] Scripting
