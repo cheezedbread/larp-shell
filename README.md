@@ -27,4 +27,11 @@ Then run:
 `` larp.exe ``
 
 ## Project status
-LarpOS is a hobby/learning project and is still being developed. The code is intentionally ass due to my massive skill issue. If you don't like my spaghetti, you are free to fork the repo and make your own modifications to it.
+LarpOS is a hobby/learning project and is still being developed (although very slowly). The code is intentionally ass due to my massive skill issue.
+
+## To-do
+- `help` command: shows list of available commands
+- `man` command: shows help on specific commands
+- Commands that connect the shell to the filesystem
+- Fake filesystem with fake root and fake `sudo`
+- Scripting
