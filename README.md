@@ -1,5 +1,5 @@
 # larp-shell
-LarpOS is a small terminal project that simulates an operating system shell.
+LarpOS is a small hobby project where I experiment with C++ by building a simulated operating system shell.
 
 ## Features
 - Interactive terminal shell
@@ -26,7 +26,7 @@ Then run:
 `` larp.exe ``
 
 ## Project status
-LarpOS is a hobby/learning project and is still being developed (although very slowly). The code is intentionally ass due to my massive skill issue.
+LarpOS is a work-in-progress shell simulation written in C++. It currently supports basic interactive commands, terminal styling, and primitive command parsing.
 
 ## To-do
 - `help` command: shows list of available commands
