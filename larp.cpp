@@ -4,6 +4,7 @@
 #include <sstream> // needed for stringstream
 #include <map> // needed for maps
 #include <vector> // god help us all
+#include "help.h"
 
 using namespace std; // it's so over
 
@@ -20,6 +21,8 @@ void clearScreen() {
 //end ai slop
 
 void setStyle(int r, int g, int b, bool bold, bool underline) {
+    cout << "\033[22m"; //disable bold
+    cout << "\033[24m"; //disable underline
     if (bold == false && underline == false) {
         cout << "\033[38;2;" + to_string(r) + ";" + to_string(g) + ";" + to_string(b) + "m";
     }
@@ -31,6 +34,62 @@ void setStyle(int r, int g, int b, bool bold, bool underline) {
     }
     else {
         cout << "\033[1;4;38;2;" + to_string(r) + ";" + to_string(g) + ";" + to_string(b) + "m";
+    }
+}
+
+void quickStyle(string inputColor, bool bold, bool underline) {
+    /*
+        for developers:
+        please use quickstyle instead of manually using setstyle to make LarpOS consistent in its color scheme
+        the following list describes available colors along with their red, green and blue values, in that order.
+            - red: 255,85,85
+            - green: 80,250,123
+            - yellow: 241,250,140
+            - purple: 187,149,249
+            - pink: 255,121,198
+            - blue: 139,233,253
+            - white: 255,255,255
+        ------------------------------------------------------------------------
+        colors are taken from https://terminalcolors.com/themes/dracula/default/
+    */
+    int r = 0;
+    int g = 0;
+    int b = 0;
+    map <string, int> red = {
+        {"red",255},
+        {"green",80},
+        {"yellow",241},
+        {"purple",187},
+        {"pink",255},
+        {"blue",139},
+        {"white",255}
+    };
+    map <string, int> green = {
+        {"red",85},
+        {"green",250},
+        {"yellow",250},
+        {"purple",149},
+        {"pink",121},
+        {"blue",233},
+        {"white",255}
+    };
+    map <string, int> blue = {
+        {"red",85},
+        {"green",123},
+        {"yellow",140},
+        {"purple",249},
+        {"pink",198},
+        {"blue",253},
+        {"white",255}
+    };
+    if (red.find(inputColor) == red.end()) {
+        cerr << "quickstyle: err: color not defined in list of available colors (red, green, yellow, purple, pink, blue, white)" << endl;
+    }
+    else {
+        r = red[inputColor];
+        g = green[inputColor];
+        b = blue[inputColor];
+        setStyle(r,g,b,bold,underline);
     }
 }
 
@@ -173,15 +232,17 @@ void detect_cmd(string input) {
         void (*lonleycmdpoint)();
         map<string, void (*)(string)> commands = { //what the fuck is a void (*)(string)
             {"echo", cmd_echo},
-            {"betterecho", cmd_betterecho}
+            {"betterecho", cmd_betterecho},
+            {"man", cmd_man}
         };
         map<string, void (*)()> lonley_commands = { //ignore my last comment i think i understand it now
-            {"clear", clearScreen}
+            {"clear", clearScreen},
+            {"help", cmd_help}
         };
 
         bool found_cmd = false;
         if (commands.find(command[0]) == commands.end() && lonley_commands.find(command[0]) == lonley_commands.end()) {
-            cout << "lsh: command not found: " << input << endl;
+            cerr << "lsh: command not found: " << input << endl;
         }
         else {
             found_cmd = true;
@@ -201,36 +262,40 @@ void detect_cmd(string input) {
 }
 
 void welcomeScreen(){
+    quickStyle("white",false,false);
     cout << R"( ______________________  _________________ )" << endl;
     cout << R"(|  _                   ||    ___  ____    |   larper@larp)" << endl;
     cout << R"(| | | __ _ _ __ _ __   ||   / _ \/ ___|   |   -----------)" << endl;
     cout << R"(| | |/ _` | '__| '_ \  ||  | | | \___ \   |   OS: LarpOS 1.0 x64_86)" << endl;
-    cout << R"(| | | (_| | |  | |_) | ||  | |_| |___) |  |   Commands: 3 (built-in))" << endl;
+    cout << R"(| | | (_| | |  | |_) | ||  | |_| |___) |  |   Commands: 6 (built-in))" << endl;
     cout << R"(| |_|\__,_|_|  | .__/  ||   \___/|____/   |   Shell: lsh)" << endl;
     cout << R"(| -------------|_|---- ||  -------------  |   Terminal: Larp-Terminal)" << endl;
     cout << R"(|______________________||_________________|   -----------)" << endl;
+    resetStyle();
 }
 
 int main(){
-    bool in_console = true;
     bool first_run = true;
     string user_input = "";
-    while (in_console == true) {
+    while (true) {
         if (first_run == true) {
             resetStyle();
             welcomeScreen();
             first_run = false;
             cout << endl;
-            cout << "> Welcome to LarpOS v1.0.0 with Larp kernel v1.0.0!" << endl;
+            quickStyle("white",true,false);
+            cout << "           Welcome to LarpOS v1.1.0 on Larp Linux v1.0.0!" << endl;
         }
+        quickStyle("green",false,false);
+        cout << "/";
+        quickStyle("white",false,false);
         cout << "> ";
         getline(cin,user_input);
         if (user_input == "exit") {
-            cout << "exit" << endl;
+            cout << "[exit]" << endl;
             break;
         }
         detect_cmd(user_input);
     }
     return 0;
 }
-
