@@ -1,0 +1,46 @@
+BETTERECHO(1)                 User Commands                             BETTERECHO(1)
+
+NAME
+
+       betterecho - display line(s) of stylized text
+
+SYNOPSIS
+
+       betterecho [STRING] ...
+       betterecho [OPTION] [STRING] ...
+
+DESCRIPTION
+
+       Echo the STRING(s) to standard output, with styling and colors if specified.
+
+       -b
+            print string in bold
+
+       -u
+            print string underlined
+
+       -c R G B
+            print string with colors specified by their red, green and blue values,
+            ranging from 0 to 255.
+
+AUTHOR
+
+       cheezedbread
+
+REPORTING BUGS
+
+       Report bugs at <https://github.com/cheezedbread/larp-shell/issues/new>
+
+COPYRIGHT
+
+       Copyright © 2026 Free Software Foundation, Inc.  License GPLv3+:
+       GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free to change and redistribute it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+
+       echo(1)
+
+
+

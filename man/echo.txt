@@ -1,0 +1,36 @@
+ECHO(1)                       User Commands                             ECHO(1)
+
+NAME
+
+       echo - display line(s) of text
+
+SYNOPSIS
+
+       echo [STRING]...
+
+DESCRIPTION
+
+       Echo the STRING(s) to standard output.
+
+AUTHOR
+
+       Originally written by Brian Fox and Chet Ramey as part of the coreutils
+       project, later modified by cheezedbread.
+
+REPORTING BUGS
+
+       Report bugs at <https://github.com/cheezedbread/larp-shell/issues/new>
+
+COPYRIGHT
+
+       Copyright © 2026 Free Software Foundation, Inc.  License GPLv3+:
+       GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free to change and redistribute it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+
+       betterecho(1)
+
+
+
