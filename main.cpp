@@ -268,7 +268,7 @@ void welcomeScreen(){
     cout << R"( ______________________  _________________ )" << endl;
     cout << R"(|  _                   ||    ___  ____    |   larper@larp)" << endl;
     cout << R"(| | | __ _ _ __ _ __   ||   / _ \/ ___|   |   -----------)" << endl;
-    cout << R"(| | |/ _` | '__| '_ \  ||  | | | \___ \   |   OS: LarpOS 1.1.1-beta x64_86)" << endl;
+    cout << R"(| | |/ _` | '__| '_ \  ||  | | | \___ \   |   OS: LarpOS 1.2.1 x64_86)" << endl;
     cout << R"(| | | (_| | |  | |_) | ||  | |_| |___) |  |   Commands: 6 (built-in))" << endl;
     cout << R"(| |_|\__,_|_|  | .__/  ||   \___/|____/   |   Shell: lsh)" << endl;
     cout << R"(| -------------|_|---- ||  -------------  |   Terminal: Larp-Terminal)" << endl;
@@ -286,7 +286,7 @@ int main(){
             first_run = false;
             cout << endl;
             quickStyle("white",true,false);
-            cout << "           Welcome to LarpOS v1.1.1-beta on Larp Linux v1.0.0!" << endl;
+            cout << "           Welcome to LarpOS v1.2.1 on Larp Linux v1.0.0!" << endl;
         }
         quickStyle("green",false,false);
         cout << "/";
