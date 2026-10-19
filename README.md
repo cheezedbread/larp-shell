@@ -13,15 +13,22 @@ LarpOS is a small hobby project where I experiment with C++ by building a simula
 - ASCII-art startup screen
 
 ## Building
-- You will need CMake (v3.16 or later), any C++ compiler, and gh.
-- Then, run these commands:
-```
-gh repo clone cheezedbread/larp-shell
-cd LarpOS
+### Requirements
+- CMake 3.16 or later
+- A compatible C++ compiler
+- GitHub CLI (gh) or Git
+### Compatibility
+Currently, LarpOS is only officially supported on Linux. Windows and other platforms are not officially supported, but users are free to try building from source.
+### Linux
+Run these commands:
+```gh repo clone cheezedbread/larp-shell
+cd larp-shell
 cmake -S . -B build
 cmake --build build
 ./build/LarpOS
 ```
+### Windows users
+Windows support is not currently provided. If you'd like to run LarpOS on Windows, you'll need to build it yourself and handle any platform-specific issues.
 
 ## Project status
 LarpOS is a work-in-progress shell simulation written in C++. It currently supports basic interactive commands, terminal styling, and primitive command parsing.
