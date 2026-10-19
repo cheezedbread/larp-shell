@@ -15,13 +15,13 @@ LarpOS is a small hobby project where I experiment with C++ by building a simula
 ## Building
 - You will need CMake (v3.16 or later), any C++ compiler, and gh.
 - Then, run these commands:
-``
+```
 gh repo clone cheezedbread/larp-shell
 cd LarpOS
 cmake -S . -B build
 cmake --build build
 ./build/LarpOS
-``
+```
 
 ## Project status
 LarpOS is a work-in-progress shell simulation written in C++. It currently supports basic interactive commands, terminal styling, and primitive command parsing.
