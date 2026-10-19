@@ -4,4 +4,5 @@ project(LarpOS)
 add_executable(LarpOS
     main.cpp
     help.cpp
+    files.cpp
 )

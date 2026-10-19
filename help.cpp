@@ -1,8 +1,4 @@
 #include <iostream>
-#include <string> // needed for to_string()
-#include <sstream> // needed for stringstream
-#include <map> // needed for maps
-#include <vector> // god help us all
 #include <fstream>
 #include "help.h"
 
@@ -14,6 +10,7 @@ void cmd_help(){
     cout << "   echo ------------ Prints current input" << endl;
     cout << "   betterecho ------ Echo, but with some basic styling" << endl;
     cout << "   man ------------- Shows help on commands" << endl;
+    cout << "   cat ------------- Concatenates text files" << endl;
     cout << "   clear ----------- Clears the terminal" << endl;
     cout << "   exit ------------ Exits LarpOS" << endl;
 }
